@@ -1,8 +1,8 @@
 <template>
-  <form action="" @submit.prevent="ishere">
+  <form action="" @submit.prevent="">
     <input type="email" v-model="login">
     <input type="password" name="" id="" v-model="password">
-    <input type="text">
+    <input type="submit">
   </form>
 </template>
 
@@ -17,9 +17,9 @@ export default {
         const password = ref('')
         const store = useStore()
 
-        ishere=()=>{
-            console.log(store.getters.users)
-        }
+        // ishere=()=>{
+        //     console.log(store.getters.users)
+        // }
 
         return {login, password, store}
     }

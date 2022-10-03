@@ -34,15 +34,23 @@ nav {
   padding: 2rem;
 }
 
-nav a {
+nav a{
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 nav a.router-link-exact-active {
   color: #276eb6;
 }
 
+nav .sign a.router-link-exact-active {
+  color: #2c3e50;
+}
+nav .sign a.router-link-exact-active:hover{
+  color: white;
+}
 .flex{
   display: flex;
   flex-wrap: wrap;

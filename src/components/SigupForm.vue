@@ -3,7 +3,7 @@
     <input type="text" v-model="name">
     <input type="email" name="" v-model="login">
     <input type="password" name=""  v-model="password">
-    <input type="submit">
+    <input class="submit" type="submit">
   </form>
 </template>
 

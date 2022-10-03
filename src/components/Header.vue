@@ -25,14 +25,15 @@ nav{
 }
 .nav{
   display: flex;
+  align-items: center;
   gap: 2rem;
 }
-.sign button{
-  background-color: none;
-  border-color: #2c3e50;
-  cursor: pointer;
+.sign a{
+  padding: .6rem 1rem;
+  border: 1px solid#2c3e50;
+  transition: .2s;
 }
-.sign button:hover{
+.sign a:hover{
   background-color: #2c3e50;
   color: white;
 }
