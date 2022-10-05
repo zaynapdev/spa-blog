@@ -26,19 +26,19 @@ body{
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   color: #2c3e50;
-  width: 1400px;
+  max-width: 1400px;
   margin: auto;
 }
-
+a{
+  text-decoration: none;
+  color: #2c3e50;
+}
 nav {
   padding: 2rem;
 }
 
 nav a{
   font-weight: bold;
-  color: #2c3e50;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 nav a.router-link-exact-active {

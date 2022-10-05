@@ -39,8 +39,4 @@ export default{
 .fullpost *{
   cursor: inherit;
 }
-a{
-  color: #2c3e50;
-  text-decoration: none;
-}
 </style>

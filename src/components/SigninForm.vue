@@ -1,8 +1,8 @@
 <template>
-  <form action="" @submit.prevent="">
-    <input type="email" v-model="login">
-    <input type="password" name="" id="" v-model="password">
-    <input type="submit">
+  <form action="" @submit.prevent="auth(loginin, passwordin)">
+    <input type="email" v-model="loginin" id="a" placeholder="E-mail">
+    <input type="password" v-model="passwordin" placeholder="password">
+    <input type="submit" value="Войти">
   </form>
 </template>
 
@@ -11,18 +11,31 @@ import { ref } from '@vue/reactivity'
 import { useStore } from 'vuex'
 
 export default {
-    name: 'Signin',
-    setup(){
-        const login = ref('')
-        const password = ref('')
-        const store = useStore()
+  name: 'Signin',
+  setup(){
+    const loginin = ref('')
+    const passwordin = ref('')
+    const store = useStore()
 
-        // ishere=()=>{
-        //     console.log(store.getters.users)
-        // }
-
-        return {login, password, store}
+    const auth=(l, p)=>{
+      const checkUser = store.getters.users.find(user=> user.login == l)
+      if (l == '') {
+        console.log('input login')
+      }else if(!checkUser){
+        console.log('wrong login')
+      } else if (p == '') {
+        console.log('input passwordw')
+      } else if (p != checkUser.password) {
+        console.log('wrong password')
+      } else {
+        store.commit('signIn')
+        console.log(true)
+      }
     }
+
+
+    return {loginin, passwordin, store, auth}
+  }
 }
 </script>
 

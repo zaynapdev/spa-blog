@@ -1,9 +1,9 @@
 <template>
   <form action="" @submit.prevent="saveUser(name, login, password)">
-    <input type="text" v-model="name">
-    <input type="email" name="" v-model="login">
-    <input type="password" name=""  v-model="password">
-    <input class="submit" type="submit">
+    <input type="text" v-model="name" placeholder="Name">
+    <input type="email" v-model="login" placeholder="E-mail">
+    <input type="password"  v-model="password" placeholder="password">
+    <input class="submit" type="submit" value="Зарегистрироваться">
   </form>
 </template>
 
@@ -20,10 +20,12 @@ export default {
         const store = useStore()
 
         const saveUser = (name, login, password)=>{
-          if(name != '' && login != '' && password != ''){
-            store.commit('addNewUser', {name, login, password})
-            console.log(store.getters.users)
+          const check = store.getters.users.find(user => user.login == login)
+          if(name != '' && login != '' && password != '' && !check){
+            store.commit('signUp', {name, login, password})
           }
+          if(check){alert('this e-mail is already used')}
+
         }
         
         return {name, login, password, store, saveUser}
