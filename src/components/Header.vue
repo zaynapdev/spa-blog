@@ -1,6 +1,11 @@
 <template>
   <nav>
-    <div class="sign nav">
+    <div class="nav" v-if="store.getters.checkIfLogged">
+      <router-link to="/signin">
+        <button @click="store.commit('logOut')">exit</button>
+      </router-link>
+    </div>
+    <div class="sign nav" v-else>
       <router-link to="/signin">sign in</router-link>
       <router-link to="/signup">sign up</router-link>
     </div>
@@ -12,8 +17,14 @@
 </template>
 
 <script>
+import { useStore } from 'vuex'
 export default {
-  name: 'Header'
+  name: 'Header',
+  setup(){
+    const store = useStore()
+
+    return {store}
+  }
 }
 </script>
 
