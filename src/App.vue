@@ -58,4 +58,21 @@ nav .sign a.router-link-exact-active:hover{
 input{
   padding: .5rem 1rem;
 }
+.button{
+  padding: 0.6rem 1rem;
+  border: 1px solid#2c3e50;
+  background: none;
+  transition: .2s;
+  cursor: pointer;
+}
+.button:hover{
+  background:#276eb6;
+  color: white;
+}
+form, .newpost{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
 </style>

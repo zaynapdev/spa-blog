@@ -1,30 +1,43 @@
 <template>
-  <div>
-    <h1>Привет, тут все посты блога :)</h1>
-    <div class="allposts flex">
+  <div v-if="user">
+    <h1>Привет, тут все ваши посты :> <button class="button" @click="newPost">Добавить</button></h1>
+    <NewPost v-if="checkAdding" @addpost="addNewPost"/>
+    <div class="allposts flex" v-else>
       <PostBlock class="post" v-for="post in posts" :img="post.img" :path="post.path" :key="post.id" :title="post.title" :link="'more'"/>
     </div>
+  </div>
+  <div v-else>
+    <h1>Авторизуйтесь чтобы видеть посты</h1>
   </div>
 </template>
 
 <script>
 import {useStore} from 'vuex'
 import PostBlock from '@/components/Post.vue'
-import {computed, onMounted} from 'vue'
+import NewPost from '@/components/NewPost.vue'
+import {computed, onMounted, ref} from 'vue'
 
 export default {
   components:{
-    PostBlock
+    PostBlock,
+    NewPost
   },
   setup(){
     const store = useStore()
+    const user = store.getters.checkIfLogged
+    const checkAdding = ref(false)
     const posts = computed(()=>{
-      return store.getters.posts
+      return store.getters.posts[user.id]
     })
-    onMounted(()=>{
-    })
+    const newPost = ()=>{
+      checkAdding.value = !checkAdding.value
+    }
+    const addNewPost = (title, text)=>{
+      store.commit('addNewPost', {id: user.id, title, text})
+      checkAdding.value = !checkAdding.value
+    }
 
-    return {posts}
+    return {posts, user, newPost, checkAdding, addNewPost}
   }
 }
 </script>

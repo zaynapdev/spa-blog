@@ -3,13 +3,14 @@
     <input type="text" v-model="name" placeholder="Name">
     <input type="email" v-model="login" placeholder="E-mail">
     <input type="password"  v-model="password" placeholder="password">
-    <input class="submit" type="submit" value="Зарегистрироваться">
+    <input class="button" type="submit" value="Зарегистрироваться" >
   </form>
 </template>
 
 <script>
 import { ref } from '@vue/reactivity'
 import { useStore } from 'vuex'
+import router from '@/router'
 
 export default {
     name: 'Signup',
@@ -23,6 +24,7 @@ export default {
           const check = store.getters.users.find(user => user.login == login)
           if(name != '' && login != '' && password != '' && !check){
             store.commit('signUp', {name, login, password})
+            router.replace({name: 'home'})
           }
           if(check){alert('this e-mail is already used')}
 
@@ -34,10 +36,5 @@ export default {
 </script>
 
 <style>
-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
+
 </style>

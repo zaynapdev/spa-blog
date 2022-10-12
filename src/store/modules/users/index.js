@@ -17,11 +17,11 @@ export default{
             state.users.push({id: id, name: payload.name, login: payload.login, password: payload.password})
             state.logged = true
             localStorage.setItem('users', JSON.stringify(state.users))
-            localStorage.setItem('logged', JSON.stringify(state.logged))
+            localStorage.setItem('logged', JSON.stringify(payload.login))
         },
-        signIn(state){
+        signIn(state, payload){
             state.logged = true
-            localStorage.setItem('logged', JSON.stringify(true))
+            localStorage.setItem('logged', JSON.stringify(payload))
         },
         logOut(state){
             state.logged = false
