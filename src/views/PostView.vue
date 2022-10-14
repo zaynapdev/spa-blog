@@ -1,6 +1,6 @@
 <template>
     <div class="post-view">
-        <PostBlock class="fullpost" :img="post.img" :title="post.title" :id="post.id" :path="'#'" :link="'back'"/>
+        <PostBlock class="fullpost" :img="post.img" :title="post.title" :id="post.id" />
         <p>{{post.text}}</p>
         <router-link to="/posts">back</router-link>
     </div>
@@ -20,15 +20,13 @@ export default{
     const store = useStore()
     const route = useRoute()
     const id = route.params.id
+    const user = store.getters.checkIfLogged
     const post = computed(()=>{
-      return store.getters.posts[id-1]
-    })
-    onMounted(()=>{
+      return store.getters.posts.find(post => post.userId == user.id && post.id == id)
     })
 
     return {post}
   }
-  
 }
 </script>
 
@@ -38,9 +36,5 @@ export default{
 }
 .fullpost *{
   cursor: inherit;
-}
-a{
-  color: #2c3e50;
-  text-decoration: none;
 }
 </style>

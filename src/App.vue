@@ -26,19 +26,19 @@ body{
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   color: #2c3e50;
-  width: 1400px;
+  max-width: 1400px;
   margin: auto;
 }
-
+a{
+  text-decoration: none;
+  color: #2c3e50;
+}
 nav {
   padding: 2rem;
 }
 
 nav a{
   font-weight: bold;
-  color: #2c3e50;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 nav a.router-link-exact-active {
@@ -57,5 +57,22 @@ nav .sign a.router-link-exact-active:hover{
 }
 input{
   padding: .5rem 1rem;
+}
+.button{
+  padding: 0.6rem 1rem;
+  border: 1px solid#2c3e50;
+  background: none;
+  transition: .2s;
+  cursor: pointer;
+}
+.button:hover{
+  background:#276eb6;
+  color: white;
+}
+form, .newpost{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 </style>

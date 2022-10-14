@@ -1,8 +1,9 @@
 export default{
     state: {
-      posts: [
+      posts: JSON.parse(localStorage.getItem('posts')) ?? [
         {
           path: '/post/1',
+          userId: '707',
           id: 1,
           title: 'Why Is My Cat So Attached To Me?',
           img: require('@/assets/1.webp'),
@@ -10,6 +11,7 @@ export default{
         },
         {
           path: '/post/2',
+          userId: '370',
           id: 2,
           title: '7 Reasons Why Do Cats Groom Each Other',
           img: require('@/assets/2.webp'),
@@ -17,29 +19,13 @@ export default{
         },
         {
           path: '/post/3',
+          userId: '707',
           id: 3,
           title: '7 Reasons Why Do Cats Chase Their Tail',
           img: require('@/assets/3.webp')
-        },
-        {
-          path: '/post/1',
-          id: 1,
-          title: 'Why Is My Cat So Attached To Me?',
-          img: require('@/assets/1.webp')
-        },
-        {
-          path: '/post/2',
-          id: 2,
-          title: '7 Reasons Why Do Cats Groom Each Other',
-          img: require('@/assets/2.webp')
-        },
-        {
-          path: '/post/3',
-          id: 3,
-          title: '7 Reasons Why Do Cats Chase Their Tail',
-          img: require('@/assets/3.webp')
-        },
-      ]
+        }
+      ],
+      imgs: [require('@/assets/1.webp'),  require('@/assets/2.webp'),  require('@/assets/3.webp')]
     },
     getters: {
       posts (state) {
@@ -47,6 +33,14 @@ export default{
       }
     },
     mutations: {
+      addNewPost(state, payload){
+        if (state.posts[payload.id] == undefined) {state.posts[payload.id] = []}
+        const id = Math.floor(Math.random() * 1000)
+        const img = state.imgs[Math.floor(Math.random() * state.imgs.length)]
+        state.posts.push({path: `/post/${id}`, userId: payload.userId, id: id, title: payload.title, img: img, text: payload.text})
+        localStorage.setItem('posts', JSON.stringify(state.posts))
+        console.log(payload)
+      }
     },
     actions: {
     },

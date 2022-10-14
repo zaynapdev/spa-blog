@@ -18,7 +18,6 @@ footer{
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
-  color: #2c3e50;
 }
 .info{
   text-align: left;

@@ -1,9 +1,7 @@
 <template>
   <div>
-    <router-link class="link" :to="{ path: path }">
-      <h1>{{ title }}</h1>
-      <img :src="img" alt="">
-    </router-link>
+    <h1>{{ title }}</h1>
+    <img :src="img" alt="">
   </div>
 </template>
 
@@ -14,8 +12,7 @@ export default {
     path: String,
     id: Number,
     title: String,
-    img: String,
-    link: String
+    img: String
   },
   setup() {
       
