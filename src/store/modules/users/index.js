@@ -15,13 +15,13 @@ export default{
         signUp(state, payload){
             const id = Math.floor(Math.random() * 1000)
             state.users.push({id: id, name: payload.name, login: payload.login, password: payload.password})
-            state.logged = true
+            state.logged = {id: id, name: payload.name, login: payload.login, password: payload.password}
             localStorage.setItem('users', JSON.stringify(state.users))
-            localStorage.setItem('logged', JSON.stringify(payload.login))
+            localStorage.setItem('logged', JSON.stringify(state.logged))
         },
         signIn(state, payload){
-            state.logged = true
-            localStorage.setItem('logged', JSON.stringify(payload))
+            state.logged = payload
+            localStorage.setItem('logged', JSON.stringify(state.logged))
         },
         logOut(state){
             state.logged = false

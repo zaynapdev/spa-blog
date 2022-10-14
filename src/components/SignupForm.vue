@@ -27,9 +27,7 @@ export default {
             router.replace({name: 'home'})
           }
           if(check){alert('this e-mail is already used')}
-
         }
-        
         return {name, login, password, store, saveUser}
     },
 }
