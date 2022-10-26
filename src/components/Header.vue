@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <div class="nav" v-if="store.getters.checkIfLogged">
+    <div class="nav" v-if="store.getters.user">
       <router-link to="/signin">
         <button @click="store.commit('logOut')" class="button" >log out</button>
       </router-link>

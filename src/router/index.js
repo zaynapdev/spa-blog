@@ -48,9 +48,9 @@ const router = createRouter({
   routes
 })
 router.beforeEach((to, from, next)=>{
-  if(to.meta.auth && JSON.parse(localStorage.getItem('logged'))) {
+  if(to.meta.auth && JSON.parse(localStorage.getItem('user'))) {
     next()
-  } else if (to.meta.auth && !JSON.parse(localStorage.getItem('logged'))) {
+  } else if (to.meta.auth && !JSON.parse(localStorage.getItem('user'))) {
     next('/signin')
   } else {
     next()

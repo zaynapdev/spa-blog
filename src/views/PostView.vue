@@ -20,7 +20,7 @@ export default{
     const store = useStore()
     const route = useRoute()
     const id = route.params.id
-    const user = store.getters.checkIfLogged
+    const user = store.getters.user
     const post = computed(()=>{
       return store.getters.posts.find(post => post.userId == user.id && post.id == id)
     })

@@ -1,5 +1,5 @@
 <template>
-  <form action="" @submit.prevent="saveUser(name, login, password)">
+  <form action="" @submit.prevent="saveUser()">
     <input type="text" v-model="name" placeholder="Name">
     <input type="email" v-model="login" placeholder="E-mail">
     <input type="password"  v-model="password" placeholder="password">
@@ -20,13 +20,9 @@ export default {
         const password = ref('')
         const store = useStore()
 
-        const saveUser = (name, login, password)=>{
-          const check = store.getters.users.find(user => user.login == login)
-          if(name != '' && login != '' && password != '' && !check){
-            store.commit('signUp', {name, login, password})
-            router.replace({name: 'home'})
-          }
-          if(check){alert('this e-mail is already used')}
+        const saveUser = ()=>{
+          store.dispatch|('signUp', {email: login.value, password: password.value})
+          router.replace('/')
         }
         return {name, login, password, store, saveUser}
     },

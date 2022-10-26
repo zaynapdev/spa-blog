@@ -26,7 +26,7 @@ export default {
   },
   setup(){
     const store = useStore()
-    const user = store.getters.checkIfLogged
+    const user = store.getters.user
     const checkAdding = ref(false)
     const posts = computed(()=>{
       return store.getters.posts.filter(post => post.userId == user.id)
@@ -37,7 +37,6 @@ export default {
     const addNewPost = (title, text)=>{
       store.commit('addNewPost', {userId: user.id, title, text})
       checkAdding.value = !checkAdding.value
-      console.log(user)
     }
 
     return {posts, user, newPost, checkAdding, addNewPost}
@@ -48,11 +47,6 @@ export default {
 <style>
 .post{
   width: calc(1400px - 75%);
-  /* box-shadow: inset 0px 0px 1px 0px black;
-  padding: 1rem 2rem;
-  flex-direction: column;
-  align-items: center;
-  position: relative; */
 }
 .post-content{
   height: 100%;

@@ -39,7 +39,6 @@ export default{
         const img = state.imgs[Math.floor(Math.random() * state.imgs.length)]
         state.posts.push({path: `/post/${id}`, userId: payload.userId, id: id, title: payload.title, img: img, text: payload.text})
         localStorage.setItem('posts', JSON.stringify(state.posts))
-        console.log(payload)
       }
     },
     actions: {
